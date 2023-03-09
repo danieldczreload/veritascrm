@@ -40,11 +40,14 @@ class AttributeValue extends Model implements AttributeValueContract
         'email'       => 'json_value',
         'address'     => 'json_value',
         'phone'       => 'json_value',
+        'social_media'=> 'json_value',
         'lookup'      => 'integer_value',
+        'multi-lookup'      => 'json_value',
         'datetime'    => 'datetime_value',
         'date'        => 'date_value',
         'file'        => 'text_value',
         'image'       => 'text_value',
+        'multi-tags'=> 'json_value',
     ];
 
     /**

@@ -44,7 +44,6 @@
                                 {{ __('admin::app.settings.users.back') }}
                             </a>
                         </div>
-                    
                         @csrf()
 
                         @if ($groups = \Illuminate\Support\Arr::get(app('core_config')->items, request()->route('slug') . '.children'))

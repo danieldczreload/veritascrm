@@ -9,7 +9,7 @@
         {!! view_render_event('admin.settings.users.create.header.before') !!}
 
         <div class="page-header">
-            
+
             {{ Breadcrumbs::render('settings.users.create') }}
 
             <div class="page-title">
@@ -43,7 +43,7 @@
                                 {!! view_render_event('admin.settings.users.create.form_controls.general.before') !!}
 
                                 @csrf()
-                                
+
                                 <div class="form-group" :class="[errors.has('name') ? 'has-error' : '']">
                                     <label class="required">
                                         {{ __('admin::app.settings.users.name') }}
@@ -105,7 +105,7 @@
                                     <label class="required">
                                         {{ __('admin::app.settings.users.password') }}
                                     </label>
-    
+
                                     <input
                                         type="password"
                                         name="password"
@@ -115,17 +115,17 @@
                                         v-validate="'required|min:6'"
                                         data-vv-as="{{ __('admin::app.settings.users.password') }}"
                                     />
-    
+
                                     <span class="control-error" v-if="errors.has('password')">
                                         @{{ errors.first('password') }}
                                     </span>
                                 </div>
-    
+
                                 <div class="form-group" :class="[errors.has('confirm_password') ? 'has-error' : '']">
                                     <label class="required">
                                         {{ __('admin::app.settings.users.confirm_password') }}
                                     </label>
-    
+
                                     <input
                                         type="password"
                                         class="control"
@@ -134,7 +134,7 @@
                                         v-validate="'required|confirmed:password'"
                                         data-vv-as="{{ __('admin::app.settings.users.confirm_password') }}"
                                     />
-    
+
                                     <span class="control-error" v-if="errors.has('confirm_password')">
                                         @{{ errors.first('confirm_password') }}
                                     </span>
@@ -142,29 +142,29 @@
 
                                 {!! view_render_event('admin.settings.users.create.form_controls.general.after') !!}
                             </tab>
-    
+
                             <tab name="{{ __('admin::app.settings.users.permission') }}">
                                 {!! view_render_event('admin.settings.users.create.form_controls.permission.before') !!}
 
-                                <div class="form-group">
-                                    <label>
-                                        {{ __('admin::app.settings.users.groups') }}
-                                    </label>
+{{--                                <div class="form-group">--}}
+{{--                                    <label>--}}
+{{--                                        {{ __('admin::app.settings.users.groups') }}--}}
+{{--                                    </label>--}}
 
-                                    <select name="groups[]" class="control" multiple>
-                                        @foreach ($groups as $group)
-                                            <option value="{{ $group->id }}" {{ old('groups') && in_array($group->id, old('groups')) ? 'selected' : '' }}>
-                                                {{ $group->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+{{--                                    <select name="groups[]" class="control" multiple>--}}
+{{--                                        @foreach ($groups as $group)--}}
+{{--                                            <option value="{{ $group->id }}" {{ old('groups') && in_array($group->id, old('groups')) ? 'selected' : '' }}>--}}
+{{--                                                {{ $group->name }}--}}
+{{--                                            </option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
 
                                 <div class="form-group" :class="[errors.has('role') ? 'has-error' : '']">
                                     <label>
                                         {{ __('admin::app.settings.users.role') }}
                                     </label>
-    
+
                                     <select
                                         name="role_id"
                                         class="control"
@@ -177,17 +177,17 @@
                                             </option>
                                         @endforeach
                                     </select>
-    
+
                                     <span class="control-error" v-if="errors.has('role_id')">
                                         @{{ errors.first('role_id') }}
                                     </span>
                                 </div>
-    
-                                <div class="form-group" :class="[errors.has('view_permission') ? 'has-error' : '']">
+
+                                <div class="form-group" :class="[errors.has('view_permission') ? 'has-error' : '']" style="display: none">
                                     <label>
                                         {{ __('admin::app.settings.users.view-permission') }}
                                     </label>
-    
+
                                     <select
                                         name="view_permission"
                                         class="control"
@@ -198,15 +198,15 @@
                                             {{ __('admin::app.settings.users.global') }}
                                         </option>
 
-                                        <option value="group" {{ old('view_permission') == 'group' ? 'selected' : '' }}>
-                                            {{ __('admin::app.settings.users.group') }}
-                                        </option>
+{{--                                        <option value="group" {{ old('view_permission') == 'group' ? 'selected' : '' }}>--}}
+{{--                                            {{ __('admin::app.settings.users.group') }}--}}
+{{--                                        </option>--}}
 
-                                        <option value="individual" {{ old('view_permission') == 'individual' ? 'selected' : '' }}>
-                                            {{ __('admin::app.settings.users.individual') }}
-                                        </option>
+{{--                                        <option value="individual" {{ old('view_permission') == 'individual' ? 'selected' : '' }}>--}}
+{{--                                            {{ __('admin::app.settings.users.individual') }}--}}
+{{--                                        </option>--}}
                                     </select>
-    
+
                                     <span class="control-error" v-if="errors.has('view_permission')">
                                         @{{ errors.first('view_permission') }}
                                     </span>
@@ -216,7 +216,7 @@
                             </tab>
                         </tabs>
                     </div>
-                    
+
                 </div>
             </div>
         </form>

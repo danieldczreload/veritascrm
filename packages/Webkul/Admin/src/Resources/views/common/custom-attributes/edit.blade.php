@@ -1,7 +1,6 @@
 @php
     $formScope = $formScope ?? '';
 @endphp
-
 @foreach ($customAttributes as $attribute)
 
     @php
@@ -51,14 +50,15 @@
 
             </label>
 
-            @include ($typeView, ['value' => isset($entity) ? $entity[$attribute->code] : null])
+            @include ($typeView, ['value' => isset($entity) ? $entity->toArray()[$attribute->code] : null])
+
 
             <span
                 class="control-error"
                 @if ($attribute->type == 'multiselect') v-if="errors.has('{{ $formScope . $attribute->code }}[]')"
                 @else  v-if="errors.has('{{ $formScope . $attribute->code }}')"  @endif
             >
-                
+
                 @if ($attribute->type == 'multiselect')
                     @{{ errors.first('{!! $formScope . $attribute->code !!}[]') }}
                 @else
@@ -68,5 +68,4 @@
         </div>
 
     @endif
-
 @endforeach

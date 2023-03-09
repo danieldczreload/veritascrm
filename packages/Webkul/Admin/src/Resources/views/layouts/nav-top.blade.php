@@ -2,7 +2,7 @@
     <div class="navbar-top-left">
         <div class="brand-logo">
             <a href="{{ route('admin.dashboard.index') }}">
-                <img src="{{ asset('vendor/webkul/admin/assets/images/logo.svg') }}" alt="{{ config('app.name') }}"/>
+                <img src="{{ asset('vendor/webkul/admin/assets/images/logo.svg') }}" alt="{{ config('app.name') }}" style="height: 40px; width: 110px;"/>
             </a>
         </div>
     </div>
@@ -19,9 +19,9 @@
             || bouncer()->hasPermission('settings.user.users.create')
         )
             <div class="quick-create">
-                <span class="button dropdown-toggle">
+<!--                <span class="button dropdown-toggle">
                     <i class="icon plus-white-icon"></i>
-                </span>
+                </span>-->
 
                 <div class="dropdown-list bottom-right">
 

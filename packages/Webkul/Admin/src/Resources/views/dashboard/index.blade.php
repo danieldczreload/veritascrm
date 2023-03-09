@@ -7,8 +7,14 @@
 @section('content-wrapper')
     <div class="content full-page dashboard">
         <h1>{{ __('admin::app.dashboard.title') }}</h1>
+        <br />
+        <br />
+        <br />
+        <br />
 
-        {!! view_render_event('admin.dashboard.index.filter.before') !!}
+        <h1 style="width: 100%; text-align: center">Bienvenidos al sistema de Gestion de Clientes de Veritas</h1>
+
+        {{--{!! view_render_event('admin.dashboard.index.filter.before') !!}
 
         <selected-cards-filter></selected-cards-filter>
 
@@ -19,10 +25,11 @@
 
         <cards-collection></cards-collection>
 
-        {!! view_render_event('admin.dashboard.index.cards.after') !!}
+        {!! view_render_event('admin.dashboard.index.cards.after') !!}--}}
     </div>
 @stop
 
+{{--
 @push('scripts')
     <script type="text/x-template" id="selected-cards-template">
         <date-range
@@ -32,7 +39,9 @@
             class="card-filter-container"
         ></date-range>
 
-        {{-- <button type="button" @click="exportDashboard">Export</button> --}}
+        --}}
+{{-- <button type="button" @click="exportDashboard">Export</button> --}}{{--
+
     </script>
 
     <script type="text/x-template" id="cards-collection-template">
@@ -112,7 +121,7 @@
 
             <div class="lead" v-else-if="cardType == 'top_card'" v-for="(data, index) in dataCollection.data">
 
-                @if (bouncer()->hasPermission('leads.view')) 
+                @if (bouncer()->hasPermission('leads.view'))
                     <a :href="'{{ route('admin.leads.view') }}/' + data.id">@{{ data.title }}</a>
                 @else
                     @{{ data.title }}</a>
@@ -441,3 +450,4 @@
         });
     </script>
 @endpush
+--}}

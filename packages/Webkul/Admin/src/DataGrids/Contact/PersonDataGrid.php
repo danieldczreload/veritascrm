@@ -43,9 +43,21 @@ class PersonDataGrid extends DataGrid
                 'persons.emails',
                 'persons.contact_numbers',
                 'organizations.name as organization',
-                'organizations.id as organization_id'
+                'organizations.id as organization_id',
+                'tags.tags'
             )
-            ->leftJoin('organizations', 'persons.organization_id', '=', 'organizations.id');
+            ->leftJoin('organizations', 'persons.organization_id', '=', 'organizations.id')
+            ->joinSub(
+                DB::table('attribute_values')
+                    ->select('entity_id', DB::raw('GROUP_CONCAT(attribute_values.json_value) as tags'))
+                    ->where('attribute_id', 34)
+                    ->groupBy('entity_id'),
+                'tags',
+                'persons.id',
+                '=',
+                'tags.entity_id'
+            )
+            ;
 
         $this->addFilter('id', 'persons.id');
         $this->addFilter('person_name', 'persons.name');
@@ -111,6 +123,22 @@ class PersonDataGrid extends DataGrid
             'sortable'         => false,
             'closure'  => function ($row) {
                 return "<a href='" . route('admin.contacts.organizations.edit', $row->organization_id) . "' target='_blank'>" . $row->organization . "</a>";
+            },
+        ]);
+
+        $this->addColumn([
+            'index'            => 'tags',
+            'label'            => 'Etiquetas',
+            'type'             => 'dropdown',
+            'sortable'         => false,
+            'closure'  => function ($row) {
+                $tags = json_decode($row->tags, true);
+                $html = '';
+                foreach ($tags as $key => $tag) {
+                    $entityTags = DB::table('tags')->addSelect('name','color')->where('id', $tag)->get();
+                    $html.= "<span class='badge badge-sm badge-pill badge-secondary-outline' style='background-color: ".$entityTags[0]->color."'>" . $entityTags[0]->name . "</span>";
+                }
+                return $html;
             },
         ]);
     }

@@ -101,9 +101,10 @@
 
                 <div class="form-group">
                     <label>{{ __('admin::app.settings.tags.color') }}</label>
-                    
+
                     <div class="color-list">
-                        <span class="color-item">
+                        <input type="color" name="color" style="width: 50px;height: 50px;margin-left: 45px" value="#337CFF" >
+<!--                        <span class="color-item">
                             <input type="radio" id="337CFF" name="color" value="#337CFF">
                             <label for="337CFF" style="background: #337CFF;"></label>
                         </span>
@@ -131,12 +132,13 @@
                         <span class="color-item">
                             <input type="radio" id="43AF52" name="color" value="#43AF52">
                             <label for="43AF52" style="background: #43AF52;"></label>
-                        </span>
+                        </span>-->
                     </div>
                 </div>
-
+                <input name="entity_type" type="hidden" value="tags">
                 {!! view_render_event('admin.settings.tags.create.form_controls.after') !!}
             </div>
         </modal>
+
     </form>
 @stop

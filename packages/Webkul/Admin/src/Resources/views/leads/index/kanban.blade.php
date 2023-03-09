@@ -83,7 +83,7 @@
             <div v-for="(stage, index) in stage_names" :slot="stage" :key="`stage-${stage}`">
                 <h2>
                     @{{ stage }}
-                    <span class="float-right">@{{ totalCounts[stage] }}</span>
+<!--                    <span class="float-right">@{{ totalCounts[stage] }}</span>-->
                 </h2>
 
                 @if (bouncer()->hasPermission('leads.create'))

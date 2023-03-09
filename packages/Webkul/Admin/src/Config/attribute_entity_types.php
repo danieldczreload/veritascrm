@@ -21,8 +21,13 @@ return [
         'repository' => 'Webkul\Product\Repositories\ProductRepository',
     ],
 
-    'quotes'      => [
+    'tags' => [
+        'name'         => 'Tags',
+        'repository'   => 'Webkul\Tag\Repositories\TagRepository',
+    ],
+
+    /*'quotes'      => [
         'name'       => 'Quote',
         'repository' => 'Webkul\Quote\Repositories\QuoteRepository',
-    ],
+    ],*/
 ];

@@ -188,7 +188,7 @@ class Core
 
         return $this->convertToAssociativeArray($items);
     }
-    
+
     /**
      * @param array            $items
      * @param string           $key

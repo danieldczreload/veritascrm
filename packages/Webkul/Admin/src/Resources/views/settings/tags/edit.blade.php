@@ -43,7 +43,7 @@
         {!! view_render_event('admin.settings.tags.edit.header.before') !!}
 
         <div class="page-header">
-            
+
             {{ Breadcrumbs::render('settings.tags.edit', $tag) }}
 
             <div class="page-title">
@@ -75,14 +75,14 @@
                             {!! view_render_event('admin.settings.tags.edit.form_controls.before') !!}
 
                             @csrf()
-                                
-                            <input name="_method" type="hidden" value="PUT">
 
+                            <input name="_method" type="hidden" value="PUT">
+                            <input name="entity_type" type="hidden" value="tags">
                             <div class="form-group" :class="[errors.has('name') ? 'has-error' : '']">
                                 <label class="required">
                                     {{ __('admin::app.settings.tags.name') }}
                                 </label>
-            
+
                                 <input
                                     type="text"
                                     name="name"
@@ -92,7 +92,7 @@
                                     data-vv-as="{{ __('admin::app.settings.tags.name') }}"
                                     value="{{ $tag->name }}"
                                 />
-            
+
                                 <span class="control-error" v-if="errors.has('name')">
                                     @{{ errors.first('name') }}
                                 </span>
@@ -100,37 +100,38 @@
 
                             <div class="form-group">
                                 <label>{{ __('admin::app.settings.tags.color') }}</label>
-                                
+
                                 <div class="color-list">
-                                    <span class="color-item">
+                                    <input type="color" name="color" style="width: 50px;height: 50px;margin-left: 45px" value="{{$tag->color}}" >
+<!--                                    <span class="color-item">
                                         <input type="radio" id="337CFF" name="color" value="#337CFF" {{ $tag->color == "#337CFF" ? 'checked' : '' }}>
                                         <label for="337CFF" style="background: #337CFF;"></label>
                                     </span>
-            
+
                                     <span class="color-item">
                                         <input type="radio" id="FEBF00" name="color" value="#FEBF00" {{ $tag->color == "#FEBF00" ? 'checked' : '' }}>
                                         <label for="FEBF00" style="background: #FEBF00;"></label>
                                     </span>
-            
+
                                     <span class="color-item">
                                         <input type="radio" id="E5549F" name="color" value="#E5549F" {{ $tag->color == "#E5549F" ? 'checked' : '' }}>
                                         <label for="E5549F" style="background: #E5549F;"></label>
                                     </span>
-            
+
                                     <span class="color-item">
                                         <input type="radio" id="27B6BB" name="color" value="#27B6BB" {{ $tag->color == "#27B6BB" ? 'checked' : '' }}>
                                         <label for="27B6BB" style="background: #27B6BB;"></label>
                                     </span>
-            
+
                                     <span class="color-item">
                                         <input type="radio" id="FB8A3F" name="color" value="#FB8A3F" {{ $tag->color == "#FB8A3F" ? 'checked' : '' }}>
                                         <label for="FB8A3F" style="background: #FB8A3F;"></label>
                                     </span>
-            
+
                                     <span class="color-item">
                                         <input type="radio" id="43AF52" name="color" value="#43AF52" {{ $tag->color == "#337CFF" ? 'checked' : '' }}>
                                         <label for="43AF52" style="background: #43AF52;"></label>
-                                    </span>
+                                    </span>-->
                                 </div>
                             </div>
 

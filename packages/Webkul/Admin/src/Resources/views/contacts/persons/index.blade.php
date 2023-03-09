@@ -24,6 +24,6 @@
                     <a href="{{ route('admin.contacts.persons.create') }}" class="btn btn-md btn-primary">{{ __('admin::app.contacts.persons.create-title') }}</a>
                 </template>
             @endif
-        <table-component>
+        </table-component>
     </div>
 @stop

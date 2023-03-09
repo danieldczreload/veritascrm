@@ -1,7 +1,7 @@
 <?php
 
 return [
-    [
+    /*[
         'key'   => 'settings.other_settings.web_forms',
         'name'  => 'web_form::app.title',
         'route' => 'admin.settings.web_forms.index',
@@ -26,5 +26,5 @@ return [
         'name'  => 'admin::app.acl.delete',
         'route' => 'admin.settings.web_forms.delete',
         'sort'  => 4,
-    ]
+    ]*/
 ];

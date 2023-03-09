@@ -1,7 +1,7 @@
 @push('scripts')
     <script type="text/x-template" id="contact-component-template">
         <div class="contact-controls">
-            
+
             <div class="form-group" :class="[errors.has('{!! $formScope ?? '' !!}person[name]') ? 'has-error' : '']">
                 <label for="person[name]" class="required">{{ __('admin::app.leads.name') }}</label>
 
@@ -15,7 +15,7 @@
                     placeholder="{{ __('admin::app.common.start-typing') }}"
                     v-validate="'required'"
                     data-vv-as="&quot;{{ __('admin::app.leads.name') }}&quot;"
-                    v-on:keyup="search"
+                    v-on="eventHandlers"
                 />
 
                 <input
@@ -37,11 +37,11 @@
                             <span>{{ __('admin::app.common.no-result-found') }}</span>
                         </li>
 
-                        <li class="action" v-if="person['name'].length && ! is_searching" @click="addAsNew()">
+<!--                        <li class="action" v-if="person['name'].length && ! is_searching" @click="addAsNew()">
                             <span>
                                 + {{ __('admin::app.common.add-as') }}
-                            </span> 
-                        </li>
+                            </span>
+                        </li>-->
                     </ul>
                 </div>
 
@@ -50,48 +50,81 @@
                 </span>
             </div>
 
-            <div class="form-group email">
-                <label for="person[emails]" class="required">{{ __('admin::app.leads.email') }}</label>
+{{--            <div class="form-group email">--}}
+{{--                <label for="person[emails]" class="required">{{ __('admin::app.leads.email') }}</label>--}}
 
-                @include('admin::common.custom-attributes.edit.email', ['formScope' => $formScope ?? ''])
-                    
-                <email-component
-                    :attribute="{'code': 'person[emails]', 'name': 'Email'}"
-                    :data="person.emails"
-                    validations="required|email"
-                ></email-component>
-            </div>
+{{--                @include('admin::common.custom-attributes.edit.email', ['formScope' => $formScope ?? ''])--}}
 
-            <div class="form-group contact-numbers">
-                <label for="person[contact_numbers]">{{ __('admin::app.leads.contact-numbers') }}</label>
+{{--                <email-component--}}
+{{--                    :attribute="{'code': 'person[emails]', 'name': 'Email'}"--}}
+{{--                    :data="person.emails"--}}
+{{--                    validations="required|email"--}}
+{{--                ></email-component>--}}
+{{--            </div>--}}
 
-                @include('admin::common.custom-attributes.edit.phone', ['formScope' => $formScope ?? ''])
-                    
-                <phone-component
-                    :attribute="{'code': 'person[contact_numbers]', 'name': 'Contact Numbers'}"
-                    :data="person.contact_numbers"
-                ></phone-component>
-            </div>
+{{--            <div class="form-group contact-numbers">--}}
+{{--                <label for="person[contact_numbers]">{{ __('admin::app.leads.contact-numbers') }}</label>--}}
 
-            <div class="form-group organization">
-                <label for="address">{{ __('admin::app.leads.organization') }}</label>
+{{--                @include('admin::common.custom-attributes.edit.phone', ['formScope' => $formScope ?? ''])--}}
 
-                @php
-                    $organizationAttribute = app('Webkul\Attribute\Repositories\AttributeRepository')->findOneWhere([
-                        'entity_type' => 'persons',
-                        'code'        => 'organization_id'
-                    ]);
+{{--                <phone-component--}}
+{{--                    :attribute="{'code': 'person[contact_numbers]', 'name': 'Contact Numbers'}"--}}
+{{--                    :data="person.contact_numbers"--}}
+{{--                ></phone-component>--}}
+{{--            </div>--}}
 
-                    $organizationAttribute->code = 'person[' . $organizationAttribute->code . ']';
-                @endphp
+{{--            <div class="form-group organization">--}}
+{{--                <label for="address">{{ __('admin::app.leads.organization') }}</label>--}}
 
-                @include('admin::common.custom-attributes.edit.lookup')
+{{--                @php--}}
+{{--                    $organizationAttribute = app('Webkul\Attribute\Repositories\AttributeRepository')->findOneWhere([--}}
+{{--                        'entity_type' => 'persons',--}}
+{{--                        'code'        => 'organization_id'--}}
+{{--                    ]);--}}
 
-                <lookup-component
-                    :attribute='@json($organizationAttribute)'
-                    :data="person.organization"
-                ></lookup-component>
-            </div>
+{{--                    $organizationAttribute->code = 'person[' . $organizationAttribute->code . ']';--}}
+{{--                @endphp--}}
+
+{{--                @include('admin::common.custom-attributes.edit.lookup')--}}
+
+{{--                <lookup-component--}}
+{{--                    :attribute='@json($organizationAttribute)'--}}
+{{--                    :data="person.organization"--}}
+{{--                ></lookup-component>--}}
+{{--            </div>--}}
+
+{{--            <div class="form-group social_media">--}}
+{{--                <label for="person[social_media]" class="required">Social Media</label>--}}
+
+{{--                @include('admin::common.custom-attributes.edit.social_media', ['formScope' => $formScope ?? ''])--}}
+
+{{--                <social_media-component--}}
+{{--                    :attribute="{'code': 'person[social_media]', 'name': 'Social Media'}"--}}
+{{--                    :data="person.social_media"--}}
+{{--                ></social_media-component>--}}
+{{--            </div>--}}
+
+{{--            <div class="form-group tag">--}}
+{{--                <label for="address">Etiqueta</label>--}}
+
+{{--                @php--}}
+{{--                    $tagAttribute = app('Webkul\Attribute\Repositories\AttributeRepository')->findOneWhere([--}}
+{{--                        'entity_type' => 'persons',--}}
+{{--                        'code'        => 'tags'--}}
+{{--                    ]);--}}
+
+{{--                    $tagAttribute->code = 'person[' . $tagAttribute->code . ']';--}}
+{{--                @endphp--}}
+
+{{--                @include('admin::common.custom-attributes.edit.lookup')--}}
+{{--                @dump($tagAttribute);--}}
+{{--                <lookup-component--}}
+{{--                    :attribute='@json($tagAttribute)'--}}
+{{--                    :data="person.tag"--}}
+{{--                ></lookup-component>--}}
+{{--            </div>--}}
+
+
         </div>
     </script>
 
@@ -99,7 +132,7 @@
         Vue.component('contact-component', {
 
             template: '#contact-component-template',
-    
+
             props: ['data'],
 
             inject: ['$validator'],
@@ -115,6 +148,10 @@
                     },
 
                     persons: [],
+                    eventHandlers: {
+                        keyup: this.search,
+                        focusout: this.cleanPerson
+                    }
                 }
             },
 
@@ -137,7 +174,7 @@
                     }
 
                     var self = this;
-                    
+                    /*axios*/
                     this.$http.get("{{ route('admin.contacts.persons.search') }}", {params: {query: this.person['name']}})
                         .then (function(response) {
                             self.persons = response.data;
@@ -157,6 +194,10 @@
 
                 addAsNew: function() {
                     this.state = 'new';
+                },
+
+                cleanPerson: function() {
+                    this.person.id == null? this.person.name ="": this.person.name = this.person.name;
                 }
             }
         });

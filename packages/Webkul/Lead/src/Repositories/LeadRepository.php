@@ -137,11 +137,11 @@ class LeadRepository extends Repository
             $person = $this->personRepository->update(array_merge($data['person'], [
                 'entity_type' => 'persons',
             ]), $data['person']['id']);
-        } else {
+        } /*else {
             $person = $this->personRepository->create(array_merge($data['person'], [
                 'entity_type' => 'persons',
             ]));
-        }
+        }*/
 
         $stage = $this->stageRepository->find($data['lead_pipeline_stage_id']);
 

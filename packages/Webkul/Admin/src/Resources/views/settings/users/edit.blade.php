@@ -9,7 +9,7 @@
         {!! view_render_event('admin.settings.users.edit.header.before', ['admin' => $admin]) !!}
 
         <div class="page-header">
-            
+
             {{ Breadcrumbs::render('settings.users.edit', $admin) }}
 
             <div class="page-title">
@@ -42,9 +42,9 @@
                                 {!! view_render_event('admin.settings.users.edit.form_controls.general.before', ['admin' => $admin]) !!}
 
                                 @csrf()
-                                
+
                                 <input name="_method" type="hidden" value="PUT">
-                                
+
                                 <div class="form-group" :class="[errors.has('name') ? 'has-error' : '']">
                                     <label class="required">
                                         {{ __('admin::app.settings.users.name') }}
@@ -150,23 +150,23 @@
                             <tab name="{{ __('admin::app.settings.users.permission') }}">
                                 {!! view_render_event('admin.settings.users.edit.form_controls.permission.before', ['admin' => $admin]) !!}
 
-                                <div class="form-group">
-                                    <label>
-                                        {{ __('admin::app.settings.users.groups') }}
-                                    </label>
+{{--                                <div class="form-group">--}}
+{{--                                    <label>--}}
+{{--                                        {{ __('admin::app.settings.users.groups') }}--}}
+{{--                                    </label>--}}
 
-                                    <?php $selectedOptionIds = old('groups') ?: $admin->groups->pluck('id')->toArray() ?>
-                                    
-                                    <select name="groups[]" class="control" multiple>
+{{--                                    <?php $selectedOptionIds = old('groups') ?: $admin->groups->pluck('id')->toArray() ?>--}}
+{{--                                    --}}
+{{--                                    <select name="groups[]" class="control" multiple>--}}
 
-                                        @foreach ($groups as $group)
-                                            <option value="{{ $group->id }}" {{ in_array($group->id, $selectedOptionIds) ? 'selected' : '' }}>
-                                                {{ $group->name }}
-                                            </option>
-                                        @endforeach
+{{--                                        @foreach ($groups as $group)--}}
+{{--                                            <option value="{{ $group->id }}" {{ in_array($group->id, $selectedOptionIds) ? 'selected' : '' }}>--}}
+{{--                                                {{ $group->name }}--}}
+{{--                                            </option>--}}
+{{--                                        @endforeach--}}
 
-                                    </select>
-                                </div>
+{{--                                    </select>--}}
+{{--                                </div>--}}
 
                                 <div class="form-group" :class="[errors.has('role') ? 'has-error' : '']">
                                     <label>

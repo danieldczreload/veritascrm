@@ -40,5 +40,10 @@ return [
     'persons' => [
         'name'         => 'Persons',
         'repository'   => 'Webkul\Contact\Repositories\PersonRepository',
+    ],
+
+    'tags' => [
+        'name'         => 'Tags',
+        'repository'   => 'Webkul\Tag\Repositories\TagRepository',
     ]
 ];

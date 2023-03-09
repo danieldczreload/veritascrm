@@ -33,7 +33,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $cards = $this->dashboardHelper->getCards();
+        /*$cards = $this->dashboardHelper->getCards();
 
         if ($dateRange = request('date-range')) {
             $dateRange = explode(",", $dateRange);
@@ -42,11 +42,11 @@ class DashboardController extends Controller
             $startDate = $dateRange[0];
         } else {
             $endDate = Carbon::now()->format('Y-m-d');
-            
-            $startDate = Carbon::now()->subMonth()->addDays(1)->format('Y-m-d');
-        }
 
-        return view('admin::dashboard.index', compact('cards', 'startDate', 'endDate'));
+            $startDate = Carbon::now()->subMonth()->addDays(1)->format('Y-m-d');
+        }*/
+
+        return view('admin::dashboard.index'/*, compact('cards', 'startDate', 'endDate')*/);
     }
 
     /**
@@ -71,7 +71,7 @@ class DashboardController extends Controller
 
     /**
      * Returns json data for available dashboard cards.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function getCards()
@@ -91,7 +91,7 @@ class DashboardController extends Controller
 
     /**
      * Returns updated json data for available dashboard cards.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function updateCards()

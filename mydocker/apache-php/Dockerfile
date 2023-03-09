@@ -49,4 +49,4 @@ RUN     curl -sLS https://deb.nodesource.com/setup_$NODE_VERSION.x | bash - \
         && apt-get clean
 
 COPY conf/000-default.conf /etc/apache2/sites-available/000-default.conf
-COPY conf/php.ini /etc/php/8.1/cli/conf.d/99-custom.ini
+COPY conf/php.ini $PHP_INI_DIR/conf.d/php.ini

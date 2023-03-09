@@ -166,6 +166,19 @@ class AttributeController extends Controller
     /**
      * Search attribute lookup results
      *
+     * @param  string  $tags
+     * @return \Illuminate\Http\Response
+     */
+    public function tags($tags)
+    {
+        $results = $this->attributeRepository->getLookUpOptions($tags, request()->input('query'),['id','name','color']);
+
+        return response()->json($results);
+    }
+
+    /**
+     * Search attribute lookup results
+     *
      * @param  string  $lookup
      * @return \Illuminate\Http\Response
      */

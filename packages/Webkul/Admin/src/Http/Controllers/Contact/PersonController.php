@@ -40,7 +40,6 @@ class PersonController extends Controller
         if (request()->ajax()) {
             return app(\Webkul\Admin\DataGrids\Contact\PersonDataGrid::class)->toJson();
         }
-
         return view('admin::contacts.persons.index');
     }
 
@@ -82,7 +81,6 @@ class PersonController extends Controller
     public function edit($id)
     {
         $person = $this->personRepository->findOrFail($id);
-
         return view('admin::contacts.persons.edit', compact('person'));
     }
 

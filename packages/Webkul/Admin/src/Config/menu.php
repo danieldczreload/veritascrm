@@ -13,7 +13,7 @@ return [
         'route'      => 'admin.leads.index',
         'sort'       => 2,
         'icon-class' => 'leads-icon',
-    ], [
+    ]/*, [
         'key'        => 'quotes',
         'name'       => 'admin::app.layouts.quotes',
         'route'      => 'admin.quotes.index',
@@ -63,20 +63,20 @@ return [
         'params'     => ['route' => 'trash'],
         'sort'       => 5,
     ]
-    // , [
-    //     'key'        => 'mail.setting',
-    //     'name'       => 'admin::app.layouts.mail.setting',
-    //     'route'      => 'admin.mail.index',
-    //     'params'     => ['route' => 'setting'],
-    //     'sort'       => 5,
-    // ]
-    , [
+     , [
+         'key'        => 'mail.setting',
+         'name'       => 'admin::app.layouts.mail.setting',
+         'route'      => 'admin.mail.index',
+         'params'     => ['route' => 'setting'],
+         'sort'       => 5,
+     ]*/
+    , /*[
         'key'        => 'activities',
         'name'       => 'admin::app.layouts.activities',
         'route'      => 'admin.activities.index',
         'sort'       => 5,
         'icon-class' => 'activities-icon',
-    ], [
+    ],*/ [
         'key'        => 'contacts',
         'name'       => 'admin::app.layouts.contacts',
         'route'      => 'admin.contacts.persons.index',
@@ -110,14 +110,14 @@ return [
         'route'      => 'admin.settings.groups.index',
         'info'       => 'admin::app.layouts.user-info',
         'sort'       => 1,
-    ], [
+    ], /*[
         'key'        => 'settings.user.groups',
         'name'       => 'admin::app.layouts.groups',
         'info'       => 'admin::app.layouts.groups-info',
         'route'      => 'admin.settings.groups.index',
         'sort'       => 1,
         'icon-class' => 'group-icon',
-    ], [
+    ],*/ [
         'key'        => 'settings.user.roles',
         'name'       => 'admin::app.layouts.roles',
         'info'       => 'admin::app.layouts.roles-info',
@@ -131,7 +131,7 @@ return [
         'route'      => 'admin.settings.users.index',
         'sort'       => 3,
         'icon-class' => 'user-icon',
-    ], [
+    ], /*[
         'key'        => 'settings.lead',
         'name'       => 'admin::app.layouts.lead',
         'info'       => 'admin::app.layouts.lead-info',
@@ -158,7 +158,7 @@ return [
         'route'      => 'admin.settings.types.index',
         'sort'       => 3,
         'icon-class' => 'type-icon',
-    ], [
+    ],*/ [
         'key'        => 'settings.automation',
         'name'       => 'admin::app.layouts.automation',
         'info'       => 'admin::app.layouts.automation-info',
@@ -171,7 +171,7 @@ return [
         'route'      => 'admin.settings.attributes.index',
         'sort'       => 1,
         'icon-class' => 'attribute-icon',
-    ], [
+    ], /*[
         'key'        => 'settings.automation.email_templates',
         'name'       => 'admin::app.layouts.email-templates',
         'info'       => 'admin::app.layouts.email-templates-info',
@@ -185,7 +185,7 @@ return [
         'route'      => 'admin.settings.workflows.index',
         'sort'       => 3,
         'icon-class' => 'workflow-icon',
-    ], [
+    ],*/ [
         'key'        => 'settings.other_settings',
         'name'       => 'admin::app.layouts.other-settings',
         'info'       => 'admin::app.layouts.other-settings-info',
@@ -199,11 +199,11 @@ return [
         'route'      => 'admin.settings.tags.index',
         'sort'       => 1,
         'icon-class' => 'tag-icon',
-    ], [
+    ]/*, [
         'key'        => 'configuration',
         'name'       => 'admin::app.layouts.configuration',
         'route'      => 'admin.configuration.index',
         'sort'       => 9,
         'icon-class' => 'tools-icon',
-    ]
+    ]*/
 ];

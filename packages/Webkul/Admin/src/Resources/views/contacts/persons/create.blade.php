@@ -6,7 +6,6 @@
 
 @section('content-wrapper')
     <div class="content full-page adjacent-center">
-
         {!! view_render_event('admin.contacts.persons.create.header.before') !!}
 
         <div class="page-header">
@@ -37,12 +36,12 @@
 
                             {!! view_render_event('admin.contacts.persons.create.form_buttons.after') !!}
                         </div>
-        
+
                         <div class="panel-body">
                             {!! view_render_event('admin.contacts.persons.create.form_controls.before') !!}
 
                             @csrf()
-                            
+
                             @include('admin::common.custom-attributes.edit', [
                                 'customAttributes' => app('Webkul\Attribute\Repositories\AttributeRepository')->findWhere([
                                     'entity_type' => 'persons',

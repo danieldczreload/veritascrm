@@ -13,7 +13,7 @@ return [
     |
      */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'VeritasCRM'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
     |
      */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'development'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     |
      */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool) env('APP_DEBUG', true),
 
     /*
     Application Version
@@ -84,7 +84,7 @@ return [
     |
      */
 
-    'timezone' => env('APP_TIMEZONE', 'Asia/Kolkata'),
+    'timezone' => env('APP_TIMEZONE', 'America/El_Salvador'),
 
     /*
     |--------------------------------------------------------------------------
@@ -97,7 +97,7 @@ return [
     |
      */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -111,8 +111,7 @@ return [
 
     'available_locales' => [
         'en' => 'English',
-        'tr' => 'Türkçe',
-        'ar' => 'Arabic',
+        'es' => 'Español'
     ],
 
     /*
@@ -126,7 +125,7 @@ return [
     |
      */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -139,7 +138,7 @@ return [
     |
      */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'es_ES',
 
     /*
     |--------------------------------------------------------------------------
@@ -238,6 +237,9 @@ return [
         Webkul\User\Providers\UserServiceProvider::class,
         Webkul\WebForm\Providers\WebFormServiceProvider::class,
         Webkul\Workflow\Providers\WorkflowServiceProvider::class,
+
+        // Own packages
+        Veritas\Providers\VeritasServiceProvider::class,
     ],
 
     /*

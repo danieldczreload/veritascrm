@@ -1,10 +1,10 @@
 <?php
- 
+
 namespace Webkul\Attribute\Traits;
 
 use Webkul\Attribute\Models\AttributeValueProxy;
 use Webkul\Attribute\Repositories\AttributeRepository;
- 
+
 trait CustomAttribute {
     /**
      * @var array
@@ -18,6 +18,7 @@ trait CustomAttribute {
         'multiselect' => 'text_value',
         'checkbox'    => 'text_value',
         'email'       => 'json_value',
+        'social_media'=> 'json_value',
         'address'     => 'json_value',
         'phone'       => 'json_value',
         'lookup'      => 'integer_value',
@@ -25,6 +26,7 @@ trait CustomAttribute {
         'date'        => 'date_value',
         'file'        => 'text_value',
         'image'       => 'text_value',
+        'multi-tags'=> 'json_value',
     ];
 
     /**
