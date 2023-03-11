@@ -132,6 +132,9 @@ class PersonDataGrid extends DataGrid
             'type'             => 'dropdown',
             'sortable'         => false,
             'closure'  => function ($row) {
+            if (empty($row->tags)) {
+                return '';
+            }
                 $tags = json_decode($row->tags, true);
                 $html = '';
                 foreach ($tags as $key => $tag) {
