@@ -47,10 +47,10 @@ class PersonDataGrid extends DataGrid
                 'tags.tags'
             )
             ->leftJoin('organizations', 'persons.organization_id', '=', 'organizations.id')
-            ->joinSub(
+            ->leftJoinSub(
                 DB::table('attribute_values')
                     ->select('entity_id', DB::raw('GROUP_CONCAT(attribute_values.json_value) as tags'))
-                    ->where('attribute_id', 34)
+                    ->where('attribute_id', 36)
                     ->groupBy('entity_id'),
                 'tags',
                 'persons.id',

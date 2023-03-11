@@ -331,10 +331,10 @@ return [
         'name'  => 'admin::app.acl.delete',
         'route' => 'admin.settings.types.delete',
         'sort'  => 3,
-    ],*/ [
+    ],*/ /*[
         'key'   => 'settings.automation',
         'name'  => 'admin::app.acl.automation',
-        'route' => ['admin.settings.attributes.index'/*, 'admin.settings.email_templates.index', 'admin.settings.workflows.index'*/],
+        'route' => ['admin.settings.attributes.index', 'admin.settings.email_templates.index', 'admin.settings.workflows.index'],
         'sort'  => 3,
     ], [
         'key'   => 'settings.automation.attributes',
@@ -356,7 +356,7 @@ return [
         'name'  => 'admin::app.acl.delete',
         'route' => 'admin.settings.attributes.delete',
         'sort'  => 3,
-    ],/* [
+    ],*//* [
         'key'   => 'settings.automation.email_templates',
         'name'  => 'admin::app.acl.email-templates',
         'route' => 'admin.settings.email_templates.index',
