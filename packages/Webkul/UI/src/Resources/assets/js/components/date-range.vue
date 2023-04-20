@@ -42,8 +42,8 @@ export default {
     data: function() {
         return {
             opens: "left",
-            minDate: "2021-03-01",
-            maxDate: this.$moment().format("YYYY-MM-DD"),
+            minDate: "2023-01-01",
+            maxDate: this.$moment().add(1,'d').format("YYYY-MM-DD"),
             dateRange: {
                 endDate: this.endDate,
                 startDate: this.startDate
@@ -108,7 +108,7 @@ export default {
                 new Date(today.getFullYear(), today.getMonth(), 0, 11, 59, 59, 999),
             ];
         },
-        
+
         updateValues: function(values) {
             this.dateRange.startDate = values.startDate;
 

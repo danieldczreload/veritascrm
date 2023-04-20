@@ -131,7 +131,7 @@ return [
         'route'      => 'admin.settings.users.index',
         'sort'       => 3,
         'icon-class' => 'user-icon',
-    ], [
+    ], /*[
         'key'        => 'settings.lead',
         'name'       => 'admin::app.layouts.lead',
         'info'       => 'admin::app.layouts.lead-info',
@@ -144,7 +144,7 @@ return [
         'route'      => 'admin.settings.pipelines.index',
         'sort'       => 1,
         'icon-class' => 'pipeline-icon',
-    ], /*[
+    ], [
         'key'        => 'settings.lead.sources',
         'name'       => 'admin::app.layouts.sources',
         'info'       => 'admin::app.layouts.sources-info',

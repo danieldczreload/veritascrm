@@ -187,9 +187,9 @@ class Dashboard
                     "total_weeks"   => $totalWeeks,
                 ]);
 
-                array_push($wonLeadsCount, $this->leadRepository->getLeadsCount("Won", $startDate, $endDate));
+                array_push($wonLeadsCount, $this->leadRepository->getLeadsCount("Ganado", $startDate, $endDate));
 
-                array_push($lostLeadsCount, $this->leadRepository->getLeadsCount("Lost", $startDate, $endDate));
+                array_push($lostLeadsCount, $this->leadRepository->getLeadsCount("Perdido", $startDate, $endDate));
             }
         } else {
             $labels = [__("admin::app.dashboard.week") . "1"];
@@ -216,7 +216,34 @@ class Dashboard
                 ]
             ];
         }
+        return $cardData ?? false;
+    }
 
+    public function getAllLeads($startDateFilter, $endDateFilter, $totalWeeks){
+        if (! bouncer()->hasPermission('leads')) {
+            return 0;
+        }
+
+        $stages = $this->leadRepository->getDefaultPipelineStages();
+
+        $labels = array_map(function ($stage) {
+            return $stage->name;
+        }, $stages->toArray());
+
+        $data = $this->leadRepository->getLeadsCountByStage($startDateFilter, $endDateFilter);
+
+        $cardData = [
+            "data" => [
+                "labels"   => $labels,
+                "datasets" => [
+                    [
+                        "data"            => $data,
+                        "label"           => '',
+                        "backgroundColor" => "#4BC0C0",
+                    ]
+                ]
+            ]
+        ];
         return $cardData ?? false;
     }
 
@@ -233,7 +260,7 @@ class Dashboard
         if (! bouncer()->hasPermission('leads')) {
             return 0;
         }
-        
+
         $labels = $leadsStarted = [];
 
         if ($totalWeeks) {
@@ -429,7 +456,7 @@ class Dashboard
             ->filter(function ($type) use ($activities) {
                 return ! in_array($type, $activities->pluck('label')->toArray());
             })
-            ->map(function ($type) { 
+            ->map(function ($type) {
                 return [
                     'count' => 0,
                     'label' => __("admin::app.activities.$type")
@@ -453,11 +480,11 @@ class Dashboard
      * @return array
      */
     public function getTopLeads($startDateFilter, $endDateFilter, $totalWeeks)
-    {   
+    {
         if (! bouncer()->hasPermission('leads')) {
             return 0;
         }
-       
+
         $topLeads = $this->leadRepository
             ->select('leads.id', 'title', 'lead_value as amount', 'leads.created_at', 'status', 'lead_pipeline_stages.name as statusLabel')
             ->leftJoin('lead_pipeline_stages', 'leads.lead_pipeline_stage_id', '=', 'lead_pipeline_stages.id')
@@ -519,7 +546,7 @@ class Dashboard
                     ->where('lead_pipelines.id', $pipeline->id)
                     ->where(function ($query) {
                         $currentUser = auth()->guard('user')->user();
-        
+
                         if ($currentUser->view_permission != 'global') {
                             if ($currentUser->view_permission == 'group') {
                                 $query->whereIn('leads.user_id', app('\Webkul\User\Repositories\UserRepository')->getCurrentUserGroupsUserIds());
@@ -800,9 +827,7 @@ class Dashboard
                 }
             }
         }
-
         $class = $class ?? $this;
-
         if (! $relevantFunction) {
             $relevantFunction = "get" . str_replace(" ", "", ucwords(str_replace("_", " ", $cardId)));
         }

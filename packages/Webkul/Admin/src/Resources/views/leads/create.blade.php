@@ -36,11 +36,11 @@
 
                             {!! view_render_event('admin.leads.create.form_buttons.after') !!}
                         </div>
-        
+
                         {!! view_render_event('admin.leads.create.form_controls.before') !!}
 
                         @csrf()
-                        
+
                         <input type="hidden" id="lead_pipeline_stage_id" name="lead_pipeline_stage_id" value="{{ request('stage_id') }}" />
 
                         <tabs>
@@ -51,7 +51,7 @@
                                     'customAttributes'  => app('Webkul\Attribute\Repositories\AttributeRepository')->findWhere([
                                         'entity_type' => 'leads',
                                         'quick_add'   => 1
-                                    ]),
+                                    ])->where('code', '!=', 'title')->where('code', '!=', 'lead_value'),
                                     'customValidations' => [
                                         'expected_close_date' => [
                                             'date_format:yyyy-MM-dd',
@@ -75,7 +75,7 @@
                             {!! view_render_event('admin.leads.create.form_controls.contact_person.after') !!}
 
 
-                            {!! view_render_event('admin.leads.create.form_controls.products.before') !!} 
+                            {!! view_render_event('admin.leads.create.form_controls.products.before') !!}
 
                             <tab name="{{ __('admin::app.leads.products') }}">
                                 @include('admin::leads.common.products')

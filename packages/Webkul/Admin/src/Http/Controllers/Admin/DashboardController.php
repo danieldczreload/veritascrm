@@ -33,7 +33,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        /*$cards = $this->dashboardHelper->getCards();
+        $cards = $this->dashboardHelper->getCards();
+        $maxDate = Carbon::now()->addDays()->format('Y-m-d');
 
         if ($dateRange = request('date-range')) {
             $dateRange = explode(",", $dateRange);
@@ -44,9 +45,10 @@ class DashboardController extends Controller
             $endDate = Carbon::now()->format('Y-m-d');
 
             $startDate = Carbon::now()->subMonth()->addDays(1)->format('Y-m-d');
-        }*/
 
-        return view('admin::dashboard.index'/*, compact('cards', 'startDate', 'endDate')*/);
+        }
+
+        return view('admin::dashboard.index', compact('cards', 'startDate', 'endDate', 'maxDate'));
     }
 
     /**

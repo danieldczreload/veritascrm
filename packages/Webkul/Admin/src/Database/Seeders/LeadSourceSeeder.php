@@ -12,33 +12,33 @@ class LeadSourceSeeder extends Seeder
     public function run()
     {
         DB::table('lead_sources')->delete();
-        
+
         $now = Carbon::now();
 
         DB::table('lead_sources')->insert([
             [
                 'id'         => 1,
-                'name'       => 'Email',
+                'name'       => 'Correo electrónico',
                 'created_at' => $now,
                 'updated_at' => $now,
             ], [
                 'id'         => 2,
-                'name'       => 'Web',
+                'name'       => 'Página web',
                 'created_at' => $now,
                 'updated_at' => $now,
             ], [
                 'id'         => 3,
-                'name'       => 'Web Form',
+                'name'       => 'Redes sociales',
                 'created_at' => $now,
                 'updated_at' => $now,
             ], [
                 'id'         => 4,
-                'name'       => 'Phone',
+                'name'       => 'Teléfono',
                 'created_at' => $now,
                 'updated_at' => $now,
             ], [
                 'id'         => 5,
-                'name'       => 'Direct',
+                'name'       => 'Visitas',
                 'created_at' => $now,
                 'updated_at' => $now,
             ]

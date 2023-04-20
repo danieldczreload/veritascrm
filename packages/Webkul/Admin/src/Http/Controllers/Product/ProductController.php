@@ -116,7 +116,6 @@ class ProductController extends Controller
         $results = $this->productRepository->findWhere([
             ['name', 'like', '%' . urldecode(request()->input('query')) . '%']
         ]);
-
         return response()->json($results);
     }
 

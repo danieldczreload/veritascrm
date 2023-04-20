@@ -12,18 +12,18 @@ class LeadTypeSeeder extends Seeder
     public function run()
     {
         DB::table('lead_types')->delete();
-        
+
         $now = Carbon::now();
 
         DB::table('lead_types')->insert([
             [
                 'id'         => 1,
-                'name'       => 'New Business',
+                'name'       => 'Nuevo negocio',
                 'created_at' => $now,
                 'updated_at' => $now,
             ], [
                 'id'         => 2,
-                'name'       => 'Existing Business',
+                'name'       => 'Negocio existente',
                 'created_at' => $now,
                 'updated_at' => $now,
             ]

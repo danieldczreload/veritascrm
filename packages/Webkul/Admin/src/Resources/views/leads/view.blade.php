@@ -209,14 +209,14 @@
                 {!! view_render_event('admin.leads.view.informations.products.after', ['lead' => $lead]) !!}
             </div>
 
-{{--            <div class="lead-content-right">--}}
+            <div class="lead-content-right">
 
-{{--                @include('admin::leads.view.stage')--}}
+                @include('admin::leads.view.stage')
 
-{{--                @include('admin::leads.view.activity-action')--}}
+                @include('admin::leads.view.activity-action')
 
-{{--                @include('admin::leads.view.activity-list')--}}
-{{--            </div>--}}
+                @include('admin::leads.view.activity-list')
+            </div>
 
         </div>
 

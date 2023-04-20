@@ -36,14 +36,14 @@
 
                             {!! view_render_event('admin.activities.edit.form_buttons.after', ['activity' => $activity]) !!}
                         </div>
-        
+
                         <div class="panel-body">
                             {!! view_render_event('admin.activities.edit.form_controls.before', ['activity' => $activity]) !!}
 
                             @csrf()
 
                             <input name="_method" type="hidden" value="PUT">
-        
+
                             <div class="form-group" :class="[errors.has('title') ? 'has-error' : '']">
                                 <label for="comment" class="required">{{ __('admin::app.activities.title-control') }}</label>
 
@@ -55,13 +55,13 @@
                                     data-vv-as="&quot;{{ __('admin::app.activities.title-control') }}&quot;"
                                     v-pre
                                 />
-        
+
                                 <span class="control-error" v-if="errors.has('title')">@{{ errors.first('title') }}</span>
                             </div>
-                
+
                             <div class="form-group" :class="[errors.has('type') ? 'has-error' : '']">
                                 <label for="type" class="required">{{ __('admin::app.activities.type') }}</label>
-        
+
                                 <?php $selectedOption = old('type') ?: $activity->type ?>
 
                                 <select
@@ -84,13 +84,13 @@
                                         {{ __('admin::app.activities.lunch') }}
                                     </option>
                                 </select>
-        
+
                                 <span class="control-error" v-if="errors.has('type')">@{{ errors.first('type') }}</span>
                             </div>
-        
+
                             <div class="form-group date" :class="[errors.has('schedule_from') || errors.has('schedule_to') ? 'has-error' : '']">
                                 <label for="schedule_from" class="required">{{ __('admin::app.activities.schedule') }}</label>
-        
+
                                 <div class="input-group">
                                     <datetime>
                                         <input
@@ -102,10 +102,10 @@
                                             v-validate="'required|date_format:yyyy-MM-dd HH:mm:ss|after:{{\Carbon\Carbon::now()->format('Y-m-d H:i:s')}}'"
                                             data-vv-as="&quot;{{ __('admin::app.activities.from') }}&quot;"
                                         >
-        
+
                                         <span class="control-error" v-if="errors.has('schedule_from')">@{{ errors.first('schedule_from') }}</span>
                                     </datetime>
-        
+
                                     <datetime>
                                         <input
                                             type="text"
@@ -116,7 +116,7 @@
                                             v-validate="'required|date_format:yyyy-MM-dd HH:mm:ss|after:schedule_from'"
                                             data-vv-as="&quot;{{ __('admin::app.activities.to') }}&quot;"
                                         >
-        
+
                                         <span class="control-error" v-if="errors.has('schedule_to')">@{{ errors.first('schedule_to') }}</span>
                                     </datetime>
                                 </div>
@@ -130,17 +130,17 @@
 
                             <div class="form-group video-conference">
                             </div>
-        
+
                             <div class="form-group">
                                 <label for="comment">{{ __('admin::app.activities.description') }}</label>
                                 <textarea class="control" id="activity-comment" name="comment" v-pre>{{ old('comment') ?: $activity->comment }}</textarea>
                             </div>
-        
-                            <div class="form-group">
+
+<!--                            <div class="form-group">
                                 <label for="participants">{{ __('admin::app.activities.participants') }}</label>
-        
+
                                 <multi-lookup-component :data='@json($activity->participants)'></multi-lookup-component>
-                            </div>
+                            </div>-->
 
                             <div class="form-group">
                                 <label for="validation">{{ __('admin::app.activities.lead') }}</label>
@@ -236,7 +236,7 @@
         Vue.component('multi-lookup-component', {
 
             template: '#multi-lookup-component-template',
-    
+
             props: ['data'],
 
             inject: ['$validator'],
@@ -292,11 +292,11 @@
                     this.$http.get("{{ route('admin.activities.search_participants') }}", {params: {query: this.search_term}})
                         .then (response => {
                             var self = this;
-                            
+
                             ['users', 'persons'].forEach(function(userType) {
                                 if (self.participants[userType].length) {
                                     self.participants[userType].forEach(function(addedUser) {
-                                        
+
                                         response.data[userType].forEach(function(user, index) {
                                             if (user.id == addedUser.id) {
                                                 response.data[userType].splice(index, 1);

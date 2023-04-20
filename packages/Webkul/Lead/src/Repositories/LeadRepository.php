@@ -113,7 +113,7 @@ class LeadRepository extends Repository
                 ->when($createdAtRange, function($query) use ($createdAtRange) {
                     return $query->whereBetween('leads.created_at', $createdAtRange);
                 })
-                ->where(function ($query) {
+                /*->where(function ($query) {
                     $currentUser = auth()->guard()->user();
 
                     if ($currentUser->view_permission != 'global') {
@@ -123,7 +123,7 @@ class LeadRepository extends Repository
                             $query->where('leads.user_id', $currentUser->id);
                         }
                     }
-                });
+                })*/;
             });
     }
 
@@ -142,6 +142,13 @@ class LeadRepository extends Repository
                 'entity_type' => 'persons',
             ]));
         }*/
+
+        $data['title']= $data['person']['name'];
+        $data['lead_value']= 0;
+
+        foreach($data['products'] as $product){
+            $data['lead_value']+= doubleval($product['price']) * intval($product['quantity']);
+        }
 
         $stage = $this->stageRepository->find($data['lead_pipeline_stage_id']);
 
@@ -296,5 +303,32 @@ class LeadRepository extends Repository
             ->where('parent.lead_id', $leadId)
             ->union(DB::table('emails as parent')->where('parent.lead_id', $leadId))
             ->get();
+    }
+
+    public function getDefaultPipelineStages()
+    {
+        return DB::table('lead_pipeline_stages')
+            ->select('lead_pipeline_stages.*')
+            ->join('lead_pipelines', 'lead_pipeline_stages.lead_pipeline_id', '=', 'lead_pipelines.id')
+            ->where('lead_pipelines.is_default', 1)
+            ->orderBy('lead_pipeline_stages.sort_order', 'asc')
+            ->get();
+    }
+
+    public function getLeadsCountByStage($startDate, $endDate)
+    {
+        $return = [];
+        $stages = $this->getDefaultPipelineStages();
+
+        foreach ($stages as $stage) {
+            $return[] = DB::table('leads')
+                ->select('leads.id')
+                ->leftJoin('lead_pipeline_stages', 'leads.lead_pipeline_stage_id', '=', 'lead_pipeline_stages.id')
+                ->where('lead_pipeline_stages.id', $stage->id)
+                ->whereBetween('leads.created_at', [$startDate, $endDate])
+                ->get()
+                ->count();
+        }
+        return $return;
     }
 }

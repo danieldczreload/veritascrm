@@ -34,7 +34,7 @@
     </head>
 
     <body @if (app()->getLocale() == 'ar') class="rtl" @endif>
-        <div id="app" class="anonymous-layout-container">
+        <div id="app" class="anonymous-layout-container" style="background-size: cover !important; background-image: url({{ asset('vendor/webkul/admin/assets/images/background_login.png') }}) !important;">
             <spinner-meter :full-page="true" v-if="! pageLoaded"></spinner-meter>
 
             <flash-wrapper ref='flashes'></flash-wrapper>

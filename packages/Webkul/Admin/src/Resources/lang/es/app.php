@@ -17,7 +17,7 @@
             'leads_started'     => 'Leads iniciados',
             'products'          => 'Productos',
             'top_products'      => 'Top Productos',
-            'leads_over_time'   => 'Tiempo extraordinario Leads',
+            'leads_over_time'   => 'Leads finalizados',
             'no_record_found'   => 'No se encontraron registros',
             'week'              => 'Semana',
         ],
@@ -735,6 +735,7 @@
                 'this-week'       => 'Esta semana',
                 'this-month'      => 'Este mes',
                 'custom'          => 'Personalizado',
+                'title'          =>  'Filtros',
             ]
         ],
 

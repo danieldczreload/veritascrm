@@ -14,7 +14,7 @@
 
         <h1 style="width: 100%; text-align: center">Bienvenidos al sistema de Gestion de Clientes de Veritas</h1>
 
-        {{--{!! view_render_event('admin.dashboard.index.filter.before') !!}
+        {!! view_render_event('admin.dashboard.index.filter.before') !!}
 
         <selected-cards-filter></selected-cards-filter>
 
@@ -25,25 +25,20 @@
 
         <cards-collection></cards-collection>
 
-        {!! view_render_event('admin.dashboard.index.cards.after') !!}--}}
+        {!! view_render_event('admin.dashboard.index.cards.after') !!}
     </div>
 @stop
 
-{{--
 @push('scripts')
     <script type="text/x-template" id="selected-cards-template">
         <date-range
             :update="updateCardData"
             end-date="{{ $endDate }}"
             start-date="{{ $startDate }}"
-            class="card-filter-container"
-        ></date-range>
-
-        --}}
-{{-- <button type="button" @click="exportDashboard">Export</button> --}}{{--
-
+            class="card-filter-container"></date-range>
+        <br /><br />
     </script>
-
+    <br /><br />
     <script type="text/x-template" id="cards-collection-template">
         <draggable v-model="filteredCards" @change="onRowDrop" class="dashboard-content">
             <div v-for="(filteredCardRow, index) in filteredCards" :key="index">
@@ -450,4 +445,3 @@
         });
     </script>
 @endpush
---}}

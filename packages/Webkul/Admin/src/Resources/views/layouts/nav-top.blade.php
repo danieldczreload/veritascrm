@@ -1,9 +1,11 @@
-<div class="navbar-top">
+<div class="navbar-top" style="background-color: #62a9cc !important;">
     <div class="navbar-top-left">
-        <div class="brand-logo">
-            <a href="{{ route('admin.dashboard.index') }}">
-                <img src="{{ asset('vendor/webkul/admin/assets/images/logo.svg') }}" alt="{{ config('app.name') }}" style="height: 40px; width: 110px;"/>
-            </a>
+        <div style="background-color: white !important; height: 100% !important; width:160px !important;">
+            <div class="brand-logo">
+                <a href="{{ route('admin.dashboard.index') }}">
+                    <img src="{{ asset('vendor/webkul/admin/assets/images/logo.svg') }}" alt="{{ config('app.name') }}" style="height: 40px; width: 110px;"/>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -134,11 +136,11 @@
                 @endif
 
                 <div class="info">
-                    <span class="howdy">{{ __('admin::app.layouts.howdy') }}</span>
+                    <span class="howdy" style="color: #000000 !important;">{{ __('admin::app.layouts.howdy') }}</span>
                     <span class="user">{{ strtok(auth()->guard('user')->user()->name, ' ') }}</span>
                 </div>
 
-                <i class="icon ellipsis-icon"></i>
+                <i class="icon ellipsis-icon" style="color: white !important;"></i>
             </div>
 
             <div class="dropdown-list bottom-right">

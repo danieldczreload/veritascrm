@@ -4,7 +4,6 @@
 
             <div class="form-group" :class="[errors.has('{!! $formScope ?? '' !!}person[name]') ? 'has-error' : '']">
                 <label for="person[name]" class="required">{{ __('admin::app.leads.name') }}</label>
-
                 <input
                     type="text"
                     name="person[name]"

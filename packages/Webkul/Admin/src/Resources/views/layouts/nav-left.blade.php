@@ -1,6 +1,6 @@
 @php($menu = Menu::prepare())
 
-<div class="navbar-left" v-bind:class="{'open': isMenuOpen}">
+<div class="navbar-left" v-bind:class="{'open': isMenuOpen}" style="background-color: #152842 !important">
     <ul class="menubar">
         @foreach ($menu->items as $menuItem)
             <li
@@ -18,7 +18,7 @@
 
                 <a href="{{ $menuItem['url'] }}">
                     <i class="icon sprite {{ $menuItem['icon-class'] }}"></i>
-                    
+
                     <span class="menu-label">{{ $menuItem['name'] }}</span>
                 </a>
 

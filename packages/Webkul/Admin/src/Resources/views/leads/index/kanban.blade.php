@@ -65,7 +65,7 @@
 
             <div class="filter-right">
 
-                @include('admin::leads.index.view-swither')
+<!--                @include('admin::leads.index.view-swither')-->
 
                 <div class="filter-btn">
                     <div class="grid-dropdown-header" @click="toggleSidebarFilter">
@@ -81,16 +81,21 @@
     <script type="text/x-template" id="kanban-component-tempalte">
         <kanban-board :stages="stage_names" :blocks="leads" @update-block="updateLeadStage">
             <div v-for="(stage, index) in stage_names" :slot="stage" :key="`stage-${stage}`">
-                <h2>
+                <h2 class="btn btn-secondary" style="cursor: default !important;
+                                                     color: white !important;
+                                                     margin: 0 auto !important;
+                                                     width: 100%;
+                                                     text-align: center;
+                                                     ">
                     @{{ stage }}
 <!--                    <span class="float-right">@{{ totalCounts[stage] }}</span>-->
                 </h2>
 
-                @if (bouncer()->hasPermission('leads.create'))
+<!--                @if (bouncer()->hasPermission('leads.create'))
                     <a :href="'{{ route('admin.leads.create') }}' + '?stage_id=' + stages[index].id">
                         {{ __('admin::app.leads.create-title') }}
                     </a>
-                @endif
+                @endif-->
             </div>
 
             <div
@@ -235,7 +240,10 @@
                                 if (response.data[stage.id] !== undefined) {
                                     totalCounts[stage.name] = response.data[stage.id]['total'];
 
-                                    self.leads = self.leads.concat(response.data[stage.id]['leads'])
+                                    let resLeads = response.data[stage.id]['leads']
+                                    self.leads = self.leads.concat(resLeads.filter(resLeads => self.leads.findIndex(lead => lead.id == resLeads.id) == -1))
+
+                                    /*self.leads = self.leads.concat(response.data[stage.id]['leads'])*/
 
                                     self.stage_pagination[stage.id] = response.data[stage.id]['pagination'];
                                 } else {
@@ -277,10 +285,12 @@
                 },
 
                 search: function (searchedKeyword) {
+                    this.leads = [];
                     this.getLeads(searchedKeyword);
                 },
 
                 updateFilter: function (data) {
+                    this.leads = [];
                     let href = data.key ? `?${data.key}[${data.cond}]=${data.value}` : false;
 
                     this.getLeads(false, href);
